@@ -18,6 +18,7 @@ sed -i '$ a 127.0.0.1 localhost' /etc/hosts
 sed -i '$ a ::1 localhost' /etc/hosts
 sed -i "$ a 127.0.0.1 $hname" /etc/hosts
 cat /etc/hosts
+touch /etc/hostname
 sed -i "$ a $hname" /etc/hostname
 cat /etc/hostname
 sed -i 's/#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
