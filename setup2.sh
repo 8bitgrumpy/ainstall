@@ -1,7 +1,7 @@
 
 
 
-pacstrap /mnt base linux-firmware linux-zen
+pacstrap /mnt base linux-firmware linux-zen git
 genfstab -U /mnt >> /mnt/etc/fstab 
 echo -e "\e[36m
 echo now arch-chroot /mnt and run the setup script 
