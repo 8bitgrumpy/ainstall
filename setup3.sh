@@ -23,7 +23,7 @@ sed -i "$ a $hname" /etc/hostname
 cat /etc/hostname
 sed -i 's/#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
 locale-gen
-mkdir /etc/boot/EFI
+mkdir /boot/EFI
 fdisk -l 
 echo -e "\e[31mTake note of EFI partition!\e[0m"
 read -p "Enter efi partition: " efipart
