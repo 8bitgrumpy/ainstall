@@ -4,7 +4,7 @@ useradd -m $usrname
 passwd $usrname
 echo -e "\e[31mSet Root password\e[0m"
 passwd
-pacman -S sudo\
+pacman -S sudo \
 grub \
 efibootmgr \
 amd-ucode
