@@ -1,4 +1,4 @@
--e "\e[36m
+echo -e "\e[36m
 
 
 Setup Disk Partitions use "fdisk"
