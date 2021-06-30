@@ -27,8 +27,8 @@ fdisk -l
 echo -e "\e[31mTake note of EFI partition!\e[0m"
 read -p "Enter efi partition: " efipart
 mount /dev/$efipart /boot/EFI
-grub-install --target=x86_64-efi --bootloader-id=grub_$hnme --recheck
-grub-mkconfig -o /boot/grub.cfg
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 timedatectl set-ntp true
 localectl set-keymap --no-convert uk
