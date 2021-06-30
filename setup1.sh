@@ -1,3 +1,6 @@
+chmod +x setup2.sh
+chmod +x setup3.sh
+chmod +x setup4.sh
 echo -e "\e[36m
 
 
