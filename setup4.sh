@@ -96,13 +96,11 @@ freerdp - remmina's rdp plugin
 
 
 sudo pacman -S --noconfirm \
-networkmanager \
 pavucontrol \
 pulseaudio \
 alsa \
 pulseaudio-alsa \
 openconnect \
-nano \
 nmap \
 htop \
 git \
