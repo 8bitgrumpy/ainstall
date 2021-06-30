@@ -29,10 +29,9 @@ read -p "Enter efi partition: " efipart
 mount /dev/$efipart /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_$hnme --recheck
 grub-mkconfig -o /boot/grub.cfg
-sed -i 's=/#[multilib]=[multilib]=' /etc/pacman.conf
-sed -i 's=#Include = /etc/pacman.d/mirrorlist=Include = /etc/pacman.d/mirrorlist=' /etc/pacman.conf
-
-
+sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+timedatectl set-ntp true
+localectl set-keymap --no-convert uk
 echo reboot PC and run app install script 
 
 
