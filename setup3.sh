@@ -7,7 +7,11 @@ passwd
 pacman -S sudo \
 grub \
 efibootmgr \
-amd-ucode
+amd-ucode \
+networkmanager \
+nano
+systemctl enable NetworkManager
+
 usermod -aG wheel,audio,video,optical,storage $usrname
 sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
 echo Set timezone
