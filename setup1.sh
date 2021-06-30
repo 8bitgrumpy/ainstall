@@ -76,7 +76,7 @@ mkswap /dev/"$dinstall"2
 swapon /dev/"$dinstall"2
 mkfs.ext4 /dev/"$dinstall"3
 echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
-
+mount /dev/"$dinstall"3 /mnt
 pacstrap /mnt base linux-firmware linux-zen git
 genfstab -U /mnt >> /mnt/etc/fstab
 
