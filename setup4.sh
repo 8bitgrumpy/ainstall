@@ -150,7 +150,10 @@ echo -e "\e[31mEnable Services\e[0m"
 echo -e "\e[31m-----------------\e[0m"
 echo Setting up base services
 sudo systemctl enable NetworkManager
+sudo systemctl enable lightdm.service
 
+wget https://linux.dropbox.com/fedora/rpm-public-key.asc
+gpg --import rpm-public-key.asc
 
 
 #yay install
@@ -172,10 +175,6 @@ teamviewer \
 echo -e "\e[31m-----------------\e[0m"
 echo -e "\e[31mSetup of system files\e[0m"
 echo -e "\e[31m-----------------\e[0m"
-
-
-.
-
 
 
 
