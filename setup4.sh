@@ -25,6 +25,7 @@ grub - boot loader
 efibootmgr - efi boot manager
 amd-ucode - amdi microcode
 sudo - sudo user control
+fakeroot - required for yay 
 
 
 Terminal tools :-
@@ -139,7 +140,8 @@ gimp \
 steam \
 ttf-liberation \
 remmina \
-freerdp
+freerdp \
+fakeroot
 
 
 echo -e "\e[35m-----------------\e[0m"
