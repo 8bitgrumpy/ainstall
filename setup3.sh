@@ -9,7 +9,7 @@ grub \
 efibootmgr \
 amd-ucode
 usermod -aG wheel,audio,video,optical,storage $usrname
-sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD:/g' ALL/etc/sudoers
+sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD:/g' /etc/sudoers
 echo Set timezone
 ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 hwclock --systohc
@@ -18,8 +18,7 @@ sed -i '$ a 127.0.0.1 localhost' /etc/hosts
 sed -i '$ a ::1 localhost' /etc/hosts
 sed -i "$ a 127.0.0.1 $hname" /etc/hosts
 cat /etc/hosts
-touch /etc/hostname
-sed -i "$ a $hname" /etc/hostname
+echo "$hname$" > /etc/hostname
 cat /etc/hostname
 sed -i 's/#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
 locale-gen
