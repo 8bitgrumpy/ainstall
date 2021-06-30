@@ -49,7 +49,7 @@ if [ "$REPLY" != "w" ]; then
 exit
 fi
 echo -e "\e[31m  Drive "$dinstall" set to be wipped . No going back \e[0m"
-dd if=/dev/zero of /dev/sda bs=1M status=progress
+dd if=/dev/zero of=/dev/"$dinstall" bs=1M status=progress
 
 echo "
 g
