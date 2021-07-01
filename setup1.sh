@@ -101,13 +101,9 @@ mount /dev/"$dinstall"3 /mnt
 pacstrap /mnt base linux-firmware linux-zen git
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cat > /mnt/tmp/setup2.sh <<EOF
-pacman -S sudo \
-grub \
-efibootmgr \
-networkmanager \
-nano \
-$ucode
+cat > /mnt/setup2.sh <<EOF
+
+pacman -Sy sudo grub efibootmgr networkmanager nano $ucode
 
 useradd "$newuname"
 passwd "$newuname"
@@ -136,7 +132,11 @@ localectl set-keymap --no-convert uk
 echo reboot PC and run app install script 
 
 EOF
-chmod +x /mnt/tmp/setup2.sh
+chmod +x /mnt/setup2.sh
+arch-chroot /mnt ./setup2.sh
+rm /mnt/setup2.sh
+reboot
+
 
 
 
