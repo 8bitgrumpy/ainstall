@@ -61,7 +61,7 @@ esac
 done
 
 
-echo -e "\e[32m  Username:  =  \e""[0m \e[31m---"$newname"---\e[0m"
+echo -e "\e[32m  Username:  =  \e""[0m \e[31m---"$newuname"---\e[0m"
 echo -e "\e[32m  Drive to be wiped : =  \e""[0m \e[31m---"$dselect"---\e[0m"
 echo -e "\e[32m  CPU Processor type : =  \e""[0m \e[31m---"$cpup"---\e[0m"
 
