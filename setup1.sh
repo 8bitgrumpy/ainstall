@@ -139,6 +139,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 timedatectl set-ntp true
 echo "KEYMAP=uk" > /etc/vconsole.conf
+chsh -s $(which zsh)
 EOF
 chmod +x /mnt/setup2.sh
 arch-chroot /mnt ./setup2.sh
