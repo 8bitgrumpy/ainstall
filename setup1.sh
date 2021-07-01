@@ -11,16 +11,7 @@ read -p ":" hname
 echo -e "\e[33m  Enter Username to be created:\e[0m"
 read -p ":" newuname
 echo -e "\e[33m  Enter password:-\e[0m"
-read -s newunamepwd1
-echo -e "\e[33m  Enter password again:-\e[0m"
-read -s newunamepwd2
-if [ "$newunamepwd1" != "$newunamepwd2" ] ;
-then
-echo -e "\e[31m  Passwords do not match, re-run the script and try again !!!\e[0m"
-exit
-else 
-echo -e "\e[32m  Passwords match. Will use the same password for root account !!!\e[0m"
-fi
+
 echo -e "\e[33m  select disk:-\e[0m"
 dselect=($(lsblk -nd --output NAME))
 
@@ -119,8 +110,8 @@ nano \
 $ucode
 
 useradd "$newuname"
-????? change user password
-????? change root password 
+passwd "$newuname"
+passwd
 systemctl enable NetworkManager
 usermod -aG wheel,audio,video,optical,storage $newuname
 sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
