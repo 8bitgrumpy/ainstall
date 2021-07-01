@@ -28,15 +28,15 @@ driveschoice=("${dselect[@]}" )
 select dselected in "${driveschoice[@]}"
 do
 case $dselected in
-"Drive 1 ${dselect[0]}")
+"${dselect[0]}")
 dinstall="${dselect[0]}"
 break
 ;;
-"Drive 2 ${dselect[1]}")
+"${dselect[1]}")
 dinstall="${dselect[1]}"
 break
 ;;
-"Drive 3 ${dselect[2]}")
+"${dselect[2]}")
 dinstall="${dselect[2]}"
 break
 ;;
