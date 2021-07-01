@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e "\e[36m
-
+loadkeys uk
 ------------------------------------------
         Brendan's Luxury Arch Installer 
 ------------------------------------------
