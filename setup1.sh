@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e "\e[36m
-loadkeys uk
+localectl set-keymap --no-convert uk
 ------------------------------------------
         Brendan's Luxury Arch Installer 
 ------------------------------------------
@@ -105,8 +105,10 @@ cat > /mnt/setup2.sh <<EOF
 
 pacman -Sy --noconfirm sudo grub efibootmgr networkmanager nano $ucode
 
-useradd "$newuname"
+echo -e "\e[32m  Creating user:  =  \e""[0m \e[31m"$newuname"\e[0m"
+useradd -m "$newuname"
 passwd "$newuname"
+echo -e "\e[32m  Set password for:  =  \e""[0m \e[31m"root"\e[0m"
 passwd
 systemctl enable NetworkManager
 usermod -aG wheel,audio,video,optical,storage $newuname
@@ -129,7 +131,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 timedatectl set-ntp true
 localectl set-keymap --no-convert uk
-echo reboot PC and run app install script 
 
 EOF
 chmod +x /mnt/setup2.sh
