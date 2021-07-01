@@ -130,12 +130,11 @@ grub-install --target=x86_64-efi  --bootloader-id=arch_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 timedatectl set-ntp true
-localectl set-keymap --no-convert uk
-
+echo "KEYMAP=uk" > /etc/vconsole.conf
 EOF
 chmod +x /mnt/setup2.sh
 arch-chroot /mnt ./setup2.sh
-rm /mnt/setup2.sh
+#rm /mnt/setup2.sh
 reboot
 
 
