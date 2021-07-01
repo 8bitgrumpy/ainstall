@@ -2,7 +2,7 @@
 echo -e "\e[36m
 
 ------------------------------------------
-        BS's Arch Installer 
+        Brendan's Luxury Arch Installer 
 ------------------------------------------
 
 \e[0m"
