@@ -6,6 +6,8 @@ loadkeys uk
 ------------------------------------------
 
 \e[0m"
+echo -e "\e[33m  Enter Hostname to be created:\e[0m"
+read -p ":" hname
 echo -e "\e[33m  Enter Username to be created:\e[0m"
 read -p ":" newuname
 echo -e "\e[33m  Enter password:-\e[0m"
@@ -60,6 +62,13 @@ break
 esac
 done
 
+if [ "$cpup" = "AMD" ] ;
+then
+ucode="amd-ucode"
+else 
+ucode="intel-ucode"
+fi
+
 
 echo -e "\e[32m  Username:  =  \e""[0m \e[31m"$newuname"\e[0m"
 echo -e "\e[32m  Drive to be wiped : =  \e""[0m \e[31m"$dinstall"\e[0m"
@@ -100,5 +109,44 @@ echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
 mount /dev/"$dinstall"3 /mnt
 pacstrap /mnt base linux-firmware linux-zen git
 genfstab -U /mnt >> /mnt/etc/fstab
+
+cat > /mnt/tmp/setup2.sh <<EOF
+pacman -S sudo \
+grub \
+efibootmgr \
+networkmanager \
+nano \
+$ucode
+
+useradd "$newuname"
+????? change user password
+????? change root password 
+systemctl enable NetworkManager
+usermod -aG wheel,audio,video,optical,storage $newuname
+sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
+ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+Set timezone
+hwclock --systohc
+sed -i '$ a 127.0.0.1 localhost' /etc/hosts
+sed -i '$ a ::1 localhost' /etc/hosts
+sed -i "$ a 127.0.0.1 $hname" /etc/hosts
+cat /etc/hosts
+echo "$hname" > /etc/hostname
+cat /etc/hostname
+sed -i 's/#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
+locale-gen
+mkdir /boot/EFI
+mount /dev/"$dinstall"1 /boot/EFI
+grub-install --target=x86_64-efi  --bootloader-id=arch_uefi --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
+sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+timedatectl set-ntp true
+localectl set-keymap --no-convert uk
+echo reboot PC and run app install script 
+
+EOF
+chmod +x /mnt/tmp/setup2.sh
+
+
 
 
