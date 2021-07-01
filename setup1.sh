@@ -24,7 +24,7 @@ dselect=($(lsblk -nd --output NAME))
 
 
 PS3="Select Drive:"
-driveschoice=("Drive 1 ${dselect[0]}" "Drive 2 ${dselect[1]}" "Drive 3 ${dselect[2]}" )
+driveschoice=("${dselect[@]}" )
 select dselected in "${driveschoice[@]}"
 do
 case $dselected in
