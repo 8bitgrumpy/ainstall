@@ -103,7 +103,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 cat > /mnt/setup2.sh <<EOF
 
-pacman -Sy sudo grub efibootmgr networkmanager nano $ucode
+pacman -Sy --noconfirm sudo grub efibootmgr networkmanager nano $ucode
 
 useradd "$newuname"
 passwd "$newuname"
