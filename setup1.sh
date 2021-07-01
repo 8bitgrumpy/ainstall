@@ -103,7 +103,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 cat > /mnt/setup2.sh <<EOF
 
-pacman -Sy --noconfirm sudo grub efibootmgr networkmanager nano $ucode
+pacman -Sy --noconfirm \
+sudo \
+grub \
+efibootmgr \
+networkmanager \
+nano \
+$ucode \
+zsh \
+grml-zsh-config 
 
 echo -e "\e[32m  Creating user:  =  \e""[0m \e[31m"$newuname"\e[0m"
 useradd -m "$newuname"
