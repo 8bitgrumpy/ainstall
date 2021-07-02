@@ -90,7 +90,7 @@ freerdp - remmina's rdp plugin
 
 
 
-sudo pamcan -Syyu
+sudo pamcan -Sy
 sudo pacman -S --noconfirm \
 pavucontrol \
 pulseaudio \
@@ -147,8 +147,6 @@ echo Setting up base services
 sudo systemctl enable NetworkManager
 sudo systemctl enable lightdm.service
 
-git clone https://8bitgrumpy.com/ainstall
-cd ainstall
 cp -fR /xfce-perchannel-xml /home/$user/.config/xfce4/xfconf/
 chown $user /home/$user/.config/xfce4/xfconf/
 cd ..
