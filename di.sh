@@ -90,7 +90,7 @@ freerdp - remmina's rdp plugin
 
 
 
-
+sudo pamcan -Syyu
 sudo pacman -S --noconfirm \
 pavucontrol \
 pulseaudio \
