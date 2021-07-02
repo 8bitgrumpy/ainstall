@@ -4,9 +4,12 @@ echo -e "\e[31m-----------------\e[0m"
 echo -e "\e[31mBS Arch Install Script\e[0m"
 echo -e "\e[31m----------------\e[0m"
 
+echo -e "\e[35mEnter password for "$user" to change shell to zsh d\e[35m"
+chsh -s $(which zsh)
 
 echo -e "\e[35m-----------------\e[0m"
 echo -e "\e[35mNSoftware due to be installed\e[35m
+
 
 
 core system components :-
@@ -81,10 +84,6 @@ ttf-liberation - font set used by steam
 Remote connection software :-
 remmina - remote connection gui
 freerdp - remmina's rdp plugin
-
-
-
-
 [0m"
 
 
@@ -146,11 +145,6 @@ echo -e "\e[31m-----------------\e[0m"
 echo Setting up base services
 sudo systemctl enable NetworkManager
 sudo systemctl enable lightdm.service
-
-cp -fR /xfce-perchannel-xml /home/$user/.config/xfce4/xfconf/
-chown $user /home/$user/.config/xfce4/xfconf/
-cd ..
-rm -r -f ainstall
 
 wget https://linux.dropbox.com/fedora/rpm-public-key.asc
 gpg --import rpm-public-key.asc
