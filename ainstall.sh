@@ -94,7 +94,8 @@ done
 
 if [ "$gpup" = "NVIDIA" ] ;
 then
-gpu="nvidia-dkms nvidia-settings "
+gpu="nvidia-dkms"
+gpus="nvidia-settings"
 else 
 gpu=""
 fi
@@ -144,7 +145,13 @@ mkfs.ext4 /dev/"$dinstall"3
 echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
 # pacstrap base components 
 mount /dev/"$dinstall"3 /mnt
-pacstrap /mnt base linux-firmware linux-zen git linux-gen-headers "$gpu"
+pacstrap /mnt base \
+linux-firmware \
+linux-zen \
+git \
+linux-zen-headers \
+"$gpu"\
+"$gpus"\
 # createing fstab to mount drives on boot
 genfstab -U /mnt >> /mnt/etc/fstab
 
