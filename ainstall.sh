@@ -5,8 +5,9 @@ echo -e "\e[36m
 ------------------------------------------
 \e[0m"
 
-sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 15/g' /etc/pacman.conf
-
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 20' /etc/pacman.conf
+sed -i '/^#VerbosePkgLists/a ILoveCandy' /etc/pacman.conf
+sed -i 's/#Color/Color/g' /etc/pacman.conf
 #Set username + hostname var
 
 echo -e "\e[33m  Enter Hostname to be created:\e[0m"
@@ -161,7 +162,12 @@ cat > /mnt/setup2.sh <<EOF
 # --- second stage install script #
 # install base components for sudo , bootloader and shell
 #pacman multi download mode 
-sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 15/g' /etc/pacman.conf
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 20' /etc/pacman.conf
+sed -i '/^#VerbosePkgLists/a ILoveCandy' /etc/pacman.conf
+sed -i 's/#Color/Color/g' /etc/pacman.conf
+#Set username + hostname var
+
+
 pacman -Sy --noconfirm \
 sudo \
 grub \
