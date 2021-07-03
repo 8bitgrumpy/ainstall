@@ -189,8 +189,6 @@ sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 timedatectl set-ntp true
 # set to uk keymap 
 echo "KEYMAP=uk" > /etc/vconsole.conf
-# change default shell to zsh 
-echo -e "\e[32m  To set ZSH as default shell enter password for:  =  \e""[0m \e[31m"$newuname"\e[0m"
 # enable services 
 systemctl enable NetworkManager
 EOF
