@@ -180,7 +180,6 @@ usermod -aG wheel,audio,video,optical,storage $newuname
 sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
 # set timezone
 ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
-Set timezone
 hwclock --systohc
 # set hosts and localhost files 
 sed -i '$ a 127.0.0.1 localhost' /etc/hosts
@@ -198,6 +197,7 @@ mount /dev/"$dinstall"1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=arch_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+Set timezone
 timedatectl set-ntp true
 # set to uk keymap 
 echo "KEYMAP=uk" > /etc/vconsole.conf
