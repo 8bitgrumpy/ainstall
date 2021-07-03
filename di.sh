@@ -139,9 +139,8 @@ freerdp \
 fakeroot
 #copy xfce4 base settings
 
-cp -rf xfce4 ~/.config/
-chown -R $user ~/.config/xfce4
-
+cp -rf xfce4 /etc/xdg/
+cp -rf autostart /etc/xda/
 
 echo -e "\e[35m-----------------\e[0m"
 echo -e "\e[31m-----------------\e[0m"
