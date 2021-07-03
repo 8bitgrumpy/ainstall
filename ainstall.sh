@@ -133,7 +133,7 @@ parted -s /dev/$ddrive mkpart primary linux-swap 550MiB 6694MiB
 
 # Create root partition
 echo "Create root partition"
-parted -s /dev/$ddrive mkpart primary ext4 6694MiB $ROOT_END -0
+parted -s /dev/$ddrive mkpart primary ext4 6694MiB -0
 
 
 mkfs.fat -F32 /dev/"$dinstall"1
