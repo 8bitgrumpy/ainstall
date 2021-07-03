@@ -159,6 +159,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cat > /mnt/setup2.sh <<EOF
 # --- second stage install script #
 # install base components for sudo , bootloader and shell
+#pacman multi download mode 
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/pacman.conf
 pacman -Sy --noconfirm \
 sudo \
 grub \
