@@ -151,7 +151,7 @@ linux-zen \
 git \
 linux-zen-headers \
 "$gpu"\
-"$gpus"\
+"$gpus"
 # createing fstab to mount drives on boot
 genfstab -U /mnt >> /mnt/etc/fstab
 
