@@ -14,11 +14,10 @@ echo -e "\e[33m  Enter Username to be created:\e[0m"
 read -p ":" newuname
 echo -e "\e[33m  Enter password:-\e[0m"
 
-echo -e "\e[33m  select disk:-\e[0m"
-dselect=($(lsblk -nd --output NAME))
-
 # set install destination var 
 
+echo -e "\e[33m  select disk:-\e[0m"
+dselect=($(lsblk -nd --output NAME))
 
 PS3="Select Drive:"
 driveschoice=("${dselect[@]}")
@@ -40,6 +39,13 @@ break
 *) ;;
 esac
 done
+# postfix nvme drives with p as diffrent partition naming format to sata 
+STR="$dinstall"
+SUB='nvme'
+if [[ "$STR" == *"$SUB"* ]]; then
+dinstall="$dinstall"p
+fi
+echo $dinstall
 # set processor var
 PS3="Select Processor:"
 cpuc=("AMD" "INTEL")
@@ -65,11 +71,38 @@ else
 ucode="intel-ucode"
 fi
 
+# set GPU var
+PS3="Select Processor:"
+gpuc=("NVIDIA" "ONBOARD")
+select gpuselected in "${gpuc[@]}"
+do
+case $gpuselected in
+"${gpuselected[0]}")
+gpup="${gpuselected[0]}"
+break
+;;
+"${gpuselected[1]}")
+gpup="${gpuselected[1]}"
+break
+;;
+*) ;;
+esac
+done
+
+if [ "$gpup" = "NVIDIA" ] ;
+then
+gpu="nvidia-dkms nvidia-settings "
+else 
+gpu=""
+fi
+
+
 # confirm before instal
 
 echo -e "\e[32m  Username:  =  \e""[0m \e[31m"$newuname"\e[0m"
 echo -e "\e[32m  Drive to be wiped : =  \e""[0m \e[31m"$dinstall"\e[0m"
 echo -e "\e[32m  CPU Processor type : =  \e""[0m \e[31m"$cpup"\e[0m"
+echo -e "\e[32m  GPU type : =  \e""[0m \e[31m"$gpu"\e[0m"
 
 read -p " Press w to continue No going back at this point. Any other key will exit this script. "
 if [ "$REPLY" != "w" ]; then
@@ -77,7 +110,7 @@ exit
 fi
 echo -e "\e[31m  Drive "$dinstall" set to be wipped . No going back \e[0m"
 #wipe selected drive
-dd if=/dev/zero of=/dev/"$dinstall" bs=1M status=progress
+dd if=/dev/zero of=/dev/"$dinstall" bs=1M status=progress -count=20000
 # create and format partitions 
 echo "
 g
@@ -167,7 +200,6 @@ EOF
 chmod +x /mnt/setup2.sh
 arch-chroot /mnt ./setup2.sh
 rm /mnt/setup2.sh
-reboot
 
 
 
