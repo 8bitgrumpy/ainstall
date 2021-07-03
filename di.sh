@@ -136,7 +136,14 @@ steam \
 ttf-liberation \
 remmina \
 freerdp \
-fakeroot
+fakeroot \
+minizip \
+bluez \
+bluez-utils \
+blueman \
+pulseaudio-bluetooth \
+
+
 #copy xfce4 base settings
 
 cp -rf xfce4 /etc/xdg/
@@ -163,12 +170,16 @@ cd ..
 rm -r -f ./yay/
 
 #install yay packages
-yay -S --nodiffmenu --noeditmenu --removemake --cleanafter --rebuildall --nocleanmenu --noconfirm \
+yay -S --nodiffmenu --noeditmenu --removemake --cleanafter --rebuildall --nocleanmenu --noconfirm --removemake --rebuild --useask --nobatchinstall \
 teams \
 dropbox \
 powershell-bin \
 signal-desktop \
 teamviewer 
+
+yay --clean --noconfirm
+
+sudo systemctl enable teamviewerd.service
 
 sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
 reboot 
