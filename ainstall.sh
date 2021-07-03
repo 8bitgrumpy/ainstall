@@ -112,7 +112,7 @@ read -p " Press w to continue No going back at this point. Any other key will ex
 if [ "$REPLY" != "w" ]; then
 exit
 fi
-echo -e "\e[31m  Drive "$dinstall" set to be wipped . No going back \e[0m"
+echo -e "\e[31m  Drive "$dinstall" set to be wiped . No going back!! \e[0m"
 #### Partitioning
 dd if=/dev/zero of=/dev/"$ddrive" bs=1M status=progress
 # Set the partition table to GPT
@@ -197,7 +197,7 @@ mount /dev/"$dinstall"1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=arch_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-Set timezone
+set timezone
 timedatectl set-ntp true
 # set to uk keymap 
 echo "KEYMAP=uk" > /etc/vconsole.conf
@@ -209,7 +209,7 @@ EOF
 chmod +x /mnt/setup2.sh
 arch-chroot /mnt ./setup2.sh
 rm /mnt/setup2.sh
-
+reboot
 
 
 
