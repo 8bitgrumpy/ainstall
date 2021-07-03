@@ -204,8 +204,11 @@ locale-gen
 mkdir /boot/EFI
 mount /dev/"$dinstall"1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=arch_uefi --recheck
+sed -i '$ a GRUB_FORCE_HIDDEN_MENU="true"' /etc/default/grub
+
 grub-mkconfig -o /boot/grub/grub.cfg
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+
 set timezone
 timedatectl set-ntp true
 # set to uk keymap 
