@@ -205,7 +205,10 @@ mkdir /boot/EFI
 mount /dev/"$dinstall"1 /boot/EFI
 grub-install --target=x86_64-efi  --bootloader-id=arch_uefi --recheck
 sed -i '$ a GRUB_FORCE_HIDDEN_MENU="true"' /etc/default/grub
-
+git clone https://github.com/8bitgrumpy/ainstall
+cp -rf ./ainstall/31_hold_shift /etc/grub.d
+chmod a+x /etc/grub.d/31_hold_shift
+rm-r ainstall
 grub-mkconfig -o /boot/grub/grub.cfg
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
