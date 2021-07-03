@@ -137,6 +137,10 @@ ttf-liberation \
 remmina \
 freerdp \
 fakeroot
+#copy xfce4 base settings
+
+cp -rf xfce4 ~/.config/
+chown -R $user ~/.config/xfce4
 
 
 echo -e "\e[35m-----------------\e[0m"
@@ -160,9 +164,13 @@ cd ..
 rm -r -f ./yay/
 
 #install yay packages
-yay -S \
+yay -S --nodiffmenu --noeditmenu --removemake --cleanafter --rebuildall --nocleanmenu --noconfirm \
 teams \
 dropbox \
 powershell-bin \
 signal-desktop \
 teamviewer 
+
+sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
+reboot 
+
