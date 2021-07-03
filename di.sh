@@ -46,7 +46,6 @@ xfce4 - Core desktop manager
 lightdm - Login screen
 lightdm-gtk-greeter - login screen theme
 xorg-server - Core level graphical interface
-nvidia - Nvidia drivers 
 dmenu - desktop quick run tool
 network-manager-applet - network system tray applet
 xfce4-screensaver - screensavers
@@ -89,7 +88,7 @@ freerdp - remmina's rdp plugin
 
 
 
-sudo pamcan -Sy
+sudo pacman -Sy
 sudo pacman -S --noconfirm \
 pavucontrol \
 pulseaudio \
@@ -110,7 +109,6 @@ xfce4 \
 lightdm \
 lightdm-gtk-greeter \
 xorg-server \
-nvidia \
 dmenu \
 network-manager-applet \
 xfce4-screensaver \
