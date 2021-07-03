@@ -139,7 +139,7 @@ mkfs.ext4 /dev/"$dinstall"3
 echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
 # pacstrap base components 
 mount /dev/"$dinstall"3 /mnt
-pacstrap /mnt base linux-firmware linux-zen git
+pacstrap /mnt base linux-firmware linux-zen git linux-gen-headers "$gpu"
 # createing fstab to mount drives on boot
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -191,7 +191,6 @@ timedatectl set-ntp true
 echo "KEYMAP=uk" > /etc/vconsole.conf
 # change default shell to zsh 
 echo -e "\e[32m  To set ZSH as default shell enter password for:  =  \e""[0m \e[31m"$newuname"\e[0m"
-chsh -s $(which zsh)
 # enable services 
 systemctl enable NetworkManager
 EOF
