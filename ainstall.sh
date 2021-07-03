@@ -113,7 +113,7 @@ exit
 fi
 echo -e "\e[31m  Drive "$dinstall" set to be wipped . No going back \e[0m"
 #### Partitioning
-dd if=dev/zero of=/dev/"$dinstall" bs=1M =count=10000
+dd if=/dev/zero of=/dev/"$dinstall" bs=1M =count=10000 status=progress
 # Set the partition table to GPT
 parted -s /dev/$ddrive mklabel gpt
 
