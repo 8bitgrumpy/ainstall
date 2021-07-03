@@ -1,7 +1,7 @@
 user=$(whoami)
 # change default shell to zsh 
 echo -e "\e[32m  To set ZSH as default shell enter password for:  =  \e""[0m \e[31m"$newuname"\e[0m"
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 echo -e "\e[31m-----------------\e[0m"
 echo -e "\e[31mBS Arch Install Script\e[0m"
