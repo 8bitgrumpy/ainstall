@@ -146,8 +146,8 @@ pulseaudio-bluetooth \
 
 #copy xfce4 base settings
 
-cp -rf xfce4 /etc/xdg/
-cp -rf autostart /etc/xda/
+sudo cp -rf xfce4 /etc/xdg/
+sudo cp -rf autostart /etc/xda/
 
 echo -e "\e[35m-----------------\e[0m"
 echo -e "\e[31m-----------------\e[0m"
