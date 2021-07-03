@@ -166,5 +166,3 @@ dropbox \
 powershell-bin \
 signal-desktop \
 teamviewer 
-
-reboot
