@@ -142,7 +142,7 @@ bluez \
 bluez-utils \
 blueman \
 pulseaudio-bluetooth \
-
+go
 
 #copy xfce4 base settings
 
@@ -180,6 +180,7 @@ teamviewer
 yay --clean --noconfirm
 
 sudo systemctl enable teamviewerd.service
+sudo systemctl enable bluetooth
 
 sudo pacman -S --noconfirm xfce4
 
