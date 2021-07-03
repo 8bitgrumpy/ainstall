@@ -181,6 +181,8 @@ yay --clean --noconfirm
 
 sudo systemctl enable teamviewerd.service
 
+sudo pacman -S --noconfirm xfce4
+
 sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
 reboot 
 
