@@ -26,14 +26,17 @@ do
 case $dselected in
 "${dselect[0]}")
 dinstall="${dselect[0]}"
+ddrive="${dselect[0]}"
 break
 ;;
 "${dselect[1]}")
 dinstall="${dselect[1]}"
+ddrive="${dselect[1]}"
 break
 ;;
 "${dselect[2]}")
 dinstall="${dselect[2]}"
+ddrive="${dselect[2]}"
 break
 ;;
 *) ;;
@@ -47,7 +50,7 @@ dinstall="$dinstall"p
 fi
 echo $dinstall
 # set processor var
-PS3="Select Processor:"
+PS3="CPU Processor:"
 cpuc=("AMD" "INTEL")
 select cpuselected in "${cpuc[@]}"
 do
@@ -72,7 +75,7 @@ ucode="intel-ucode"
 fi
 
 # set GPU var
-PS3="Select Processor:"
+PS3="GPU Processor:"
 gpuc=("NVIDIA" "ONBOARD")
 select gpuselected in "${gpuc[@]}"
 do
@@ -109,36 +112,37 @@ if [ "$REPLY" != "w" ]; then
 exit
 fi
 echo -e "\e[31m  Drive "$dinstall" set to be wipped . No going back \e[0m"
-#wipe selected drive
-dd if=/dev/zero of=/dev/"$dinstall" bs=1M status=progress -count=20000
-# create and format partitions 
-echo "
-g
-n
-1
-2048
-+550M
-t
-1
-n
-2
+#### Partitioning
+# Set the partition table to GPT
+parted -s /dev/$ddrive mklabel gpt
 
-+6G
-t
-2
-19
-n
-3
+# Remove any older partitions
+parted -s /dev/$ddrive rm 1 &> /dev/null
+parted -s /dev/$ddrive rm 2 &> /dev/null
+parted -s /dev/$ddrive rm 3 &> /dev/null
+parted -s /dev/$ddrive rm 4 &> /dev/null
+
+# Create boot partition
+echo "Create boot partition"
+parted -s /dev/$ddrive mkpart primary fat32 1MiB 550MiB
+parted -s /dev/$ddrive set 1 esp on
+
+# Create swap partition
+echo "Create swap partition"
+parted -s /dev/$ddrive mkpart primary linux-swap 550MiB 6694MiB
+
+# Create root partition
+echo "Create root partition"
+parted -s /dev/$ddrive mkpart primary ext4 6694MiB $ROOT_END -0
 
 
-w" | fdisk /dev/"$dinstall"
 mkfs.fat -F32 /dev/"$dinstall"1
 mkswap /dev/"$dinstall"2
 swapon /dev/"$dinstall"2
 mkfs.ext4 /dev/"$dinstall"3
 echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
 # pacstrap base components 
-mount /dev/"$dinstall"3 /mnt
+mount /dev/"$ddrive"3 /mnt
 pacstrap /mnt base linux-firmware linux-zen git linux-gen-headers "$gpu"
 # createing fstab to mount drives on boot
 genfstab -U /mnt >> /mnt/etc/fstab
