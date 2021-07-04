@@ -68,7 +68,7 @@ dropbox YAY - dropbox client
 powershell-bin YAY - MS powershell
 signal-desktop YAYT - signal messagner
 teamviewer YAY - teamviewer client
-
+mousepad - basic notepad 
 
 Desktop tools :-
 firefox - Web browser
@@ -142,7 +142,8 @@ bluez \
 bluez-utils \
 blueman \
 pulseaudio-bluetooth \
-go
+go \
+mousepad
 
 #copy xfce4 base settings
 
