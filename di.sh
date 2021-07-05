@@ -157,7 +157,8 @@ echo -e "\e[31m-----------------\e[0m"
 echo Setting up base services
 sudo systemctl enable NetworkManager
 sudo systemctl enable lightdm.service
-
+#stop pulseaudio auto switch output 
+sudo sed -i 's/^load-module module-switch-on-connect$/# load-module module-switch-on-connect/g' /etc/pulse/default.pa && pulseaudio -k
 wget https://linux.dropbox.com/fedora/rpm-public-key.asc
 gpg --import rpm-public-key.asc
 
