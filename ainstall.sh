@@ -96,7 +96,7 @@ done
 
 if [ "$gpup" = "NVIDIA" ] ;
 then
-gpu="nvidia-dkms"
+gpu="nvidia"
 gpus="nvidia-settings"
 else 
 gpu=""
@@ -149,9 +149,9 @@ echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
 mount /dev/"$dinstall"3 /mnt
 pacstrap /mnt base \
 linux-firmware \
-linux-zen \
+linux \
 git \
-linux-zen-headers \
+linux-headers \
 "$gpu" \
 "$gpus"
 # createing fstab to mount drives on boot
