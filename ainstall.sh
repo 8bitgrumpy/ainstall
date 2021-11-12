@@ -137,13 +137,13 @@ parted -s /dev/$ddrive mkpart primary linux-swap 550MiB 6694MiB
 
 # Create root partition
 echo "Create root partition"
-parted -s /dev/$ddrive mkpart primary xfs 6694MiB 100%
+parted -s /dev/$ddrive mkpart primary f2fs 6694MiB 100%
 
 
 mkfs.fat -F32 /dev/"$dinstall"1
 mkswap /dev/"$dinstall"2
 swapon /dev/"$dinstall"2
-mkfs.xfs -L x /dev/"$dinstall"3
+mkfs.f2fs -l x /dev/"$dinstall"3
 echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
 # pacstrap base components 
 mount /dev/"$dinstall"3 /mnt
