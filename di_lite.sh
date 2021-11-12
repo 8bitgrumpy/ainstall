@@ -47,7 +47,7 @@ flameshot \
 openbox \
 obconf-qt \
 notepadqq \
-
+signal-desktop
 
 #yay install
 git clone https://aur.archlinux.org/yay.git
@@ -57,12 +57,6 @@ makepkg -si
 cd ..
 rm -r -f ./yay/
 
-#install yay packages
-yay -S --nodiffmenu --noeditmenu --removemake --cleanafter --rebuildall --nocleanmenu --noconfirm --removemake --rebuild --useask --nobatchinstall \
-signal-desktop 
- 
-
-yay --clean --noconfirm
 
 
 sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
