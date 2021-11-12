@@ -76,31 +76,31 @@ else
 ucode="intel-ucode"
 fi
 
-# set GPU var
-PS3="GPU Processor:"
-gpuc=("NVIDIA" "ONBOARD")
-select gpuselected in "${gpuc[@]}"
-do
-case $gpuselected in
-"${gpuselected[0]}")
-gpup="${gpuselected[0]}"
-break
-;;
-"${gpuselected[1]}")
-gpup="${gpuselected[1]}"
-break
-;;
-*) ;;
-esac
-done
+## set GPU var
+#PS3="GPU Processor:"
+#gpuc=("NVIDIA" "ONBOARD")
+#select gpuselected in "${gpuc[@]}"
+#do
+#case $gpuselected in
+#"${gpuselected[0]}")
+#gpup="${gpuselected[0]}"
+#break
+#;;
+#"${gpuselected[1]}")
+#gpup="${gpuselected[1]}"
+#break
+#;;
+#*) ;;
+#esac
+#done
 
-if [ "$gpup" = "NVIDIA" ] ;
-then
-gpu="nvidia"
-gpus="nvidia-settings"
-else 
-gpu=""
-fi
+#if [ "$gpup" = "NVIDIA" ] ;
+#then
+#gpu="nvidia"
+#gpus="nvidia-settings"
+#else 
+#gpu=""
+#fi
 
 
 # confirm before instal
@@ -116,7 +116,7 @@ exit
 fi
 echo -e "\e[31m  Drive "$dinstall" set to be wiped . No going back!! \e[0m"
 #### Partitioning
-dd if=/dev/zero of=/dev/"$ddrive" bs=1M status=progress count=20000
+dd if=/dev/zero of=/dev/"$ddrive" bs=1M status=progress count=12000
 # Set the partition table to GPT
 parted -s /dev/$ddrive mklabel gpt
 
@@ -152,8 +152,7 @@ linux-firmware \
 linux-zen \
 git \
 linux-zen-headers \
-"$gpu" \
-"$gpus"
+
 # createing fstab to mount drives on boot
 genfstab -U /mnt >> /mnt/etc/fstab
 
