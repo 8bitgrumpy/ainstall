@@ -143,7 +143,7 @@ parted -s /dev/$ddrive mkpart primary xfs 6694MiB 100%
 mkfs.fat -F32 /dev/"$dinstall"1
 mkswap /dev/"$dinstall"2
 swapon /dev/"$dinstall"2
-mkfs.xfs -l x /dev/"$dinstall"3
+mkfs.xfs -L -q x /dev/"$dinstall"3
 echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
 # pacstrap base components 
 mount /dev/"$dinstall"3 /mnt
