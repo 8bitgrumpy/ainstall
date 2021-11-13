@@ -13,42 +13,23 @@ echo -e "\e[35mBase DTE installing ...... \e[35m"
 sudo pacman -Sy
 sudo pacman -S --noconfirm \
 htop \
-thunar-volman \
-udisks2 \
-gvfs \
-ntfs-3g \
-xorg-server \
-xorg-xinit \
-dmenu \
-p7zip \
-gvfs-smb \
-sshfs \
-firefox \
 fakeroot \
 minizip \
 go \
 base-devel \
-lximage-qt \
-lxqt-about \
-lxqt-admin \
-lxqt-archiver \
-lxqt-config \
-lxqt-globalkeys \
-lxqt-openssh-askpass \
-lxqt-panel \
-lxqt-policykit \
-lxqt-powermanagement \
-lxqt-qtplugin \
-lxqt-runner \
-lxqt-session \
-lxqt-themes \
-pavucontrol-qt \
-pcmanfm-qt \
-flameshot \
-openbox \
-obconf-qt \
-notepadqq \
-#signal-desktop
+xorg \
+xorg-xinit \
+ttf-dejavu \
+sxkhd \
+ranger \
+dmenu \
+bluez \
+bluez-utils \
+pulseaudio \
+pavucontrol \
+picom \
+bspwm
+
 
 
 
@@ -60,13 +41,30 @@ makepkg -si
 cd ..
 rm -r -f ./yay/
 
-sed -i '$ a if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then' ~/.bash_profile
-sed -i '$ a startx' ~/.bash_profile
-sed -i '$ a fi' ~/.bash_profile
+yay -S ttf-unifont \
+siji-git \
+ttf-font-awesome \
+ttf-material-design-icons \
 
-cat > ~/.xinitrc <<EOF
-exec startlxqt
-EOF
+
+
+#sed -i '$ a if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then' ~/.bash_profile
+#sed -i '$ a startx' ~/.bash_profile
+#sed -i '$ a fi' ~/.bash_profile
+
+
+
+#cat > ~/.xinitrc <<EOF
+#exec exec bspwm
+#EOF
+
+sudo systemctl enable bluetooth.service
+
+mkdir ~/.config
+mkdir ~/.config/bspwn
+mikdir ~/.config/sxhd
+sudo install -Dm755 /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
+sudo install -Dm644 /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
 
 
 sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
