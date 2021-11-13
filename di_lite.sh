@@ -56,7 +56,7 @@ polybar
 
 
 cat > ~/.xinitrc <<EOF
-exec exec bspwm
+exec bspwm
 EOF
 
 sudo systemctl enable bluetooth.service
