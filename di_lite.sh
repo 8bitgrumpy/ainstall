@@ -20,7 +20,7 @@ base-devel \
 xorg \
 xorg-xinit \
 ttf-dejavu \
-sxkhd \
+sxhkd \
 ranger \
 dmenu \
 bluez \
