@@ -45,6 +45,7 @@ yay -S ttf-unifont \
 siji-git \
 ttf-font-awesome \
 ttf-material-design-icons \
+polybar 
 
 
 
