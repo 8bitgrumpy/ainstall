@@ -28,7 +28,8 @@ bluez-utils \
 pulseaudio \
 pavucontrol \
 picom \
-bspwm
+bspwm \
+alacritty
 
 
 
