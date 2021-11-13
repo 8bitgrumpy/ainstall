@@ -62,7 +62,7 @@ EOF
 sudo systemctl enable bluetooth.service
 
 mkdir ~/.config
-mkdir ~/.config/bspwn
+mkdir ~/.config/bspwm
 mikdir ~/.config/sxhd
 sudo install -Dm755 /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
 sudo install -Dm644 /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
