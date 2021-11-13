@@ -221,7 +221,76 @@ EOF
 chmod +x /mnt/setup2.sh
 arch-chroot /mnt ./setup2.sh
 rm /mnt/setup2.sh
-echo You should be good to reboot... with luck..
+
+echo -e "\e[33m  Base install complete - Installing Desktop Enviroment \e[0m"
+
+user=$(whoami)
+
+#Base programs for LXQT
+
+sudo pacman -Sy
+sudo pacman -S --noconfirm \
+htop \
+gvfs \
+ntfs-3g \
+xorg-server \
+xorg-xinit \
+dmenu \
+p7zip \
+gvfs-smb \
+sshfs \
+firefox \
+fakeroot \
+minizip \
+go \
+base-devel \
+lximage-qt \
+lxqt-about \
+lxqt-admin \
+lxqt-archiver \
+lxqt-config \
+lxqt-globalkeys \
+lxqt-openssh-askpass \
+lxqt-panel \
+lxqt-policykit \
+lxqt-powermanagement \
+lxqt-qtplugin \
+lxqt-runner \
+lxqt-session \
+lxqt-themes \
+pavucontrol-qt \
+pcmanfm-qt \
+flameshot \
+openbox \
+obconf-qt \
+notepadqq \
+signal-desktop
 
 
+#yay helper install
+
+#yay install
+git clone https://aur.archlinux.org/yay.git
+chown $user:$user ./yay
+cd yay
+makepkg -si
+cd ..
+rm -r -f ./yay/
+
+# setup of bash_profile to auto startx
+sed -i '$ a if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then' ~/.bash_profile
+sed -i '$ a startx' ~/.bash_profile
+sed -i '$ a fi' ~/.bash_profile
+
+#setup of the auto startx
+cat > ~/.xinitrc <<EOF
+exec startlxqt
+EOF
+
+
+#bit of tidy up at the end
+sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
+
+#reboot because why not
+reboot
 
