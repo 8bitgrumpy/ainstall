@@ -64,6 +64,9 @@ sed -i '$ a if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then' ~/.bash_prof
 sed -i '$ a startx' ~/.bash_profile
 sed -i '$ a fi' ~/.bash_profile
 
+cat > ~/.xinitrc <<EOF
+exec startlxqt
+EOF
 
 
 sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
