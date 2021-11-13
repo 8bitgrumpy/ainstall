@@ -18,6 +18,7 @@ udisks2 \
 gvfs \
 ntfs-3g \
 xorg-server \
+xorg-xinit \
 dmenu \
 p7zip \
 gvfs-smb \
@@ -47,7 +48,9 @@ flameshot \
 openbox \
 obconf-qt \
 notepadqq \
-signal-desktop
+#signal-desktop
+
+
 
 #yay install
 git clone https://aur.archlinux.org/yay.git
@@ -56,6 +59,10 @@ cd yay
 makepkg -si
 cd ..
 rm -r -f ./yay/
+
+sed -i '$ a if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then' ~/.bash_profile
+sed -i '$ startx' ~/.bash_profile
+sed -i '$ a fi' ~/.bash_profile
 
 
 
