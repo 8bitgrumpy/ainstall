@@ -61,7 +61,7 @@ cd ..
 rm -r -f ./yay/
 
 sed -i '$ a if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then' ~/.bash_profile
-sed -i '$ startx' ~/.bash_profile
+sed -i '$ a startx' ~/.bash_profile
 sed -i '$ a fi' ~/.bash_profile
 
 
