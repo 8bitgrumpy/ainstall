@@ -5,6 +5,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 picom --config ~/.config/picom/picom.conf &
 feh --bg-scale ~/.config/wallpapers/pixel_city.png &
 xscreensaver -no-splash &
+signal-desktop --start-in-tray &
+
 
 bspc monitor -d I II III
 
