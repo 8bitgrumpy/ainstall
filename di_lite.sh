@@ -46,19 +46,19 @@ makepkg -si
 cd ..
 rm -r -f ./yay/
 
-yay -S -nocleanmenu --nodiffmenu ttf-unifont \
-siji-git \
-ttf-font-awesome \
-ttf-material-design-icons \
-polybar \
-brave-bin
+yay -S -nocleanmenu --nodiffmenu ttf-unifont
+yay -S -nocleanmenu --nodiffmenu siji-git
+yay -S -nocleanmenu --nodiffmenu ttf-font-awesome
+yay -S -nocleanmenu --nodiffmenu ttf-material-design-icons
+yay -S -nocleanmenu --nodiffmenu polybar
+yay -S -nocleanmenu --nodiffmenu brave
 
-cp ./di_lite_config/Xauthority ~/.Xauthority
-cp ./di_lite_config/bash_profile ~/.bash_profile
-cp ./di_lite_config/bashrc ~/.bashrc
-cp ./di_lite_config/xinitrc ~/.xinitrc
-cp ./di_lite_config/xscreensaver ~/.xscreensaver
-cp ./di_lite_config/config ~/.config
+cp -r ./di_lite_config/Xauthority ~/.Xauthority
+cp -r ./di_lite_config/bash_profile ~/.bash_profile
+cp -r ./di_lite_config/bashrc ~/.bashrc
+cp -r ./di_lite_config/xinitrc ~/.xinitrc
+cp -r ./di_lite_config/xscreensaver ~/.xscreensaver
+cp -rf ./di_lite_config/config ~/.config
 
 
 
