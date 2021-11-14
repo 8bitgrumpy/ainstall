@@ -60,9 +60,13 @@ cp -r ./di_lite_config/bashrc ~/.bashrc
 cp -r ./di_lite_config/xinitrc ~/.xinitrc
 cp -r ./di_lite_config/xscreensaver ~/.xscreensaver
 cp -rf ./di_lite_config/config/* ~/.config/
+chmod +x ~/.config/bspwm/bspwmrc
+chmod +x ~/.config/sxhkd/sxhkdrc
+chmod +x ~/.config/polybar/launch.sh
 
+yay -Scc --noconfirm
+sudo pacman -Scc noconfirm
 
-sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
 
 
 
