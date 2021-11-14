@@ -36,8 +36,9 @@ rsync \
 signal-desktop \
 xscreensaver \
 speedtest-cli \
-python3
-
+python3 \ 
+amd-ucode \
+nvidia-dkms
 
 
 
