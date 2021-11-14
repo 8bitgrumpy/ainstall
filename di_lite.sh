@@ -66,6 +66,7 @@ cp -rf ./di_lite_config/config/* ~/.config/
 chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/sxhkd/sxhkdrc
 chmod +x ~/.config/polybar/launch.sh
+chmod +x ~/.config/polybar/scripts/speedtest/polybar-speedtest
 
 yay -Scc --noconfirm
 sudo pacman -Scc noconfirm
