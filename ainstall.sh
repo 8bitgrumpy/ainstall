@@ -170,6 +170,7 @@ sed -i 's/#Color/Color/g' /etc/pacman.conf
 pacman -Sy --noconfirm \
 sudo \
 grub \
+os-prober \
 efibootmgr \
 networkmanager \
 nano \
