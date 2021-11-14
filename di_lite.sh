@@ -34,7 +34,9 @@ samba \
 feh \
 rsync \
 signal-desktop \
-xscreensaver
+xscreensaver \
+speedtest-cli \
+python3
 
 
 
