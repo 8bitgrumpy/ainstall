@@ -38,7 +38,8 @@ xscreensaver \
 speedtest-cli \
 python3 \ 
 amd-ucode \
-nvidia-dkms
+nvidia-dkms \
+lxappearance
 
 
 
