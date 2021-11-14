@@ -32,7 +32,8 @@ bspwm \
 terminator \
 samba \
 feh \
-rsync 
+rsync \
+signal-desktop
 
 
 
@@ -46,12 +47,12 @@ makepkg -si
 cd ..
 rm -r -f ./yay/
 
-yay -S -nocleanmenu --nodiffmenu ttf-unifont
-yay -S -nocleanmenu --nodiffmenu siji-git
-yay -S -nocleanmenu --nodiffmenu ttf-font-awesome
-yay -S -nocleanmenu --nodiffmenu ttf-material-design-icons
-yay -S -nocleanmenu --nodiffmenu polybar
-yay -S -nocleanmenu --nodiffmenu brave
+yay -S  ttf-unifont
+yay -S  siji-git
+yay -S  ttf-font-awesome
+yay -S  ttf-material-design-icons
+yay -S  polybar
+yay -S  brave
 
 cp -r ./di_lite_config/Xauthority ~/.Xauthority
 cp -r ./di_lite_config/bash_profile ~/.bash_profile
@@ -59,12 +60,6 @@ cp -r ./di_lite_config/bashrc ~/.bashrc
 cp -r ./di_lite_config/xinitrc ~/.xinitrc
 cp -r ./di_lite_config/xscreensaver ~/.xscreensaver
 cp -rf ./di_lite_config/config ~/.config
-
-
-
-
-sudo systemctl enable bluetooth.service
-
 
 
 sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
