@@ -59,7 +59,7 @@ cp -r ./di_lite_config/bash_profile ~/.bash_profile
 cp -r ./di_lite_config/bashrc ~/.bashrc
 cp -r ./di_lite_config/xinitrc ~/.xinitrc
 cp -r ./di_lite_config/xscreensaver ~/.xscreensaver
-cp -rf ./di_lite_config/config ~/.config
+cp -rf ./di_lite_config/config/ ~/.config/
 
 
 sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
