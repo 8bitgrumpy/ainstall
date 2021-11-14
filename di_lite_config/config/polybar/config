@@ -62,14 +62,14 @@ cursor-scroll = ns-resize
 
 [module/speedtest-down]
 type = custom/script
-exec-if hash speedtest
+exec-if = hash speedtest
 exec = ~/.config/polybar/scripts/speedtest/polybar-speedtest
 format-underline = #66004d
 interval = 300
 
 [module/speedtest-up]
 type = custom/script
-exec-if hash speedtest
+exec-if = hash speedtest
 exec = ~/.config/polybar/scripts/speedtest/polybar-speedtest --upload
 format-underline = #66004d
 interval = 300
