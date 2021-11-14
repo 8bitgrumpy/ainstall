@@ -40,7 +40,8 @@ python3 \
 amd-ucode \
 nvidia-dkms \
 lxappearance \
-unzip
+unzip \
+pcmanfm
 
 
 
