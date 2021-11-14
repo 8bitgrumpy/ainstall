@@ -33,7 +33,8 @@ terminator \
 samba \
 feh \
 rsync \
-signal-desktop
+signal-desktop \
+xscreensaver
 
 
 
