@@ -72,6 +72,9 @@ chmod +x ~/.config/sxhkd/sxhkdrc
 chmod +x ~/.config/polybar/launch.sh
 chmod +x ~/.config/polybar/scripts/speedtest/polybar-speedtest
 
+unzip Dracula.zip
+sudo cp -R Dracula /usr/share/icons/
+
 yay -Scc --noconfirm
 sudo pacman -Scc noconfirm
 
