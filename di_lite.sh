@@ -39,7 +39,8 @@ speedtest-cli \
 python3 \ 
 amd-ucode \
 nvidia-dkms \
-lxappearance
+lxappearance \
+unzip
 
 
 
