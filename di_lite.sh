@@ -58,6 +58,7 @@ yay -S  ttf-font-awesome
 yay -S  ttf-material-design-icons
 yay -S  polybar
 yay -S  brave
+yay -S ant-dracula-gtk-theme
 
 cp -r ./di_lite_config/Xauthority ~/.Xauthority
 cp -r ./di_lite_config/bash_profile ~/.bash_profile
