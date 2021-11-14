@@ -34,7 +34,6 @@ samba \
 feh \
 rsync \
 signal-desktop \
-xscreensaver \
 speedtest-cli \
 python3 \ 
 amd-ucode \
@@ -61,6 +60,7 @@ yay -S  ttf-material-design-icons
 yay -S  polybar
 yay -S  brave
 yay -S dracula-gtk-theme
+yay -S xscreensaver-arch-logo
 
 cp -r ./di_lite_config/Xauthority ~/.Xauthority
 cp -r ./di_lite_config/bash_profile ~/.bash_profile
