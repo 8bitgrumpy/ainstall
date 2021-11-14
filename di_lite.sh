@@ -29,7 +29,11 @@ pulseaudio \
 pavucontrol \
 picom \
 bspwm \
-alacritty
+terminator \
+samba \
+feh \
+rsync 
+
 
 
 
@@ -42,31 +46,25 @@ makepkg -si
 cd ..
 rm -r -f ./yay/
 
-yay -S ttf-unifont \
+yay -S -nocleanmenu --nodiffmenu ttf-unifont \
 siji-git \
 ttf-font-awesome \
 ttf-material-design-icons \
-polybar 
+polybar \
+brave-bin
+
+cp ./di_lite_config/Xauthority ~/.Xauthority
+cp ./di_lite_config/bash_profile ~/.bash_profile
+cp ./di_lite_config/bashrc ~/.bashrc
+cp ./di_lite_config/xinitrc ~/.xinitrc
+cp ./di_lite_config/xscreensaver ~/.xscreensaver
+cp ./di_lite_config/config ~/.config
 
 
 
-#sed -i '$ a if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then' ~/.bash_profile
-#sed -i '$ a startx' ~/.bash_profile
-#sed -i '$ a fi' ~/.bash_profile
-
-
-
-cat > ~/.xinitrc <<EOF
-exec bspwm
-EOF
 
 sudo systemctl enable bluetooth.service
 
-mkdir ~/.config
-mkdir ~/.config/bspwm
-mikdir ~/.config/sxhd
-sudo install -Dm755 /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
-sudo install -Dm644 /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
 
 
 sudo pacman -Rsn --noconfirm  $(pacman -Qdtq)
