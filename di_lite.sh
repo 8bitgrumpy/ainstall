@@ -40,7 +40,8 @@ amd-ucode \
 nvidia-dkms \
 lxappearance \
 unzip \
-pcmanfm
+pcmanfm \
+udiskie 
 
 
 
