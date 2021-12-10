@@ -6,6 +6,7 @@ picom --config ~/.config/picom/picom.conf &
 feh --bg-scale ~/.config/wallpapers/pixel_city.png &
 xscreensaver -no-splash &
 signal-desktop --start-in-tray &
+udiskie --no-automount --tray &
 
 
 bspc monitor -d I II III
