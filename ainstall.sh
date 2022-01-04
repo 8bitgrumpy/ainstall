@@ -184,11 +184,9 @@ sed -i 's/#Color/Color/g' /etc/pacman.conf
 pacman -Sy --noconfirm \
 sudo \
 grub \
-os-prober \
 efibootmgr \
 networkmanager \
 nano \
-$ucode \
 # set user passwords
 echo -e "\e[32m  Creating user:  =  \e""[0m \e[31m"$newuname"\e[0m"
 useradd -m "$newuname"
