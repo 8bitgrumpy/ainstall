@@ -244,7 +244,7 @@ chmod +x /mnt/setup2.sh
 arch-chroot /mnt ./setup2.sh
 rm /mnt/setup2.sh
 echo You should be good to reboot... with luck..
-
+reboot now
 
 
 
