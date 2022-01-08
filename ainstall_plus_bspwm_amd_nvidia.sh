@@ -66,63 +66,12 @@ if [[ "$STR" == *"$SUB"* ]]; then
 dinstall="$dinstall"p
 fi
 echo $dinstall
-# set processor var
-PS3="CPU Processor:"
-cpuc=("AMD" "INTEL")
-select cpuselected in "${cpuc[@]}"
-do
-case $cpuselected in
-"${cpuselected[0]}")
-cpup="${cpuselected[0]}"
-break
-;;
-"${cpuselected[1]}")
-cpup="${cpuselected[1]}"
-break
-;;
-*) ;;
-esac
-done
-
-if [ "$cpup" = "AMD" ] ;
-then
-ucode="amd-ucode"
-else 
-ucode="intel-ucode"
-fi
-
-## set GPU var
-#PS3="GPU Processor:"
-#gpuc=("NVIDIA" "ONBOARD")
-#select gpuselected in "${gpuc[@]}"
-#do
-#case $gpuselected in
-#"${gpuselected[0]}")
-#gpup="${gpuselected[0]}"
-#break
-#;;
-#"${gpuselected[1]}")
-#gpup="${gpuselected[1]}"
-#break
-#;;
-#*) ;;
-#esac
-#done
-
-#if [ "$gpup" = "NVIDIA" ] ;
-#then
-#gpu="nvidia"
-#gpus="nvidia-settings"
-#else 
-#gpu=""
-#fi
-
 
 # confirm before instal
 
 echo -e "\e[32m  Username:  =  \e""[0m \e[31m"$newuname"\e[0m"
 echo -e "\e[32m  Drive to be wiped : =  \e""[0m \e[31m"$dinstall"\e[0m"
-echo -e "\e[32m  CPU Processor type : =  \e""[0m \e[31m"$cpup"\e[0m"
+
 
 read -p " Press w to continue No going back at this point. Any other key will exit this script. "
 if [ "$REPLY" != "w" ]; then
@@ -151,7 +100,7 @@ parted -s /dev/$ddrive mkpart primary linux-swap 550MiB 6694MiB
 
 # Create root partition
 echo "Create root partition"
-parted -s /dev/$ddrive mkpart primary f2fs 6694MiB 100%
+parted -s /dev/$ddrive mkpart primary ext4 6694MiB 100%
 
 
 mkfs.fat -F32 /dev/"$dinstall"1
