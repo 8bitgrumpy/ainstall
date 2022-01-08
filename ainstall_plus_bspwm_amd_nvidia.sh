@@ -200,9 +200,9 @@ paru -S --noconfirm xscreensaver-arch-logo
 # set user passwords
 echo -e "\e[32m  Creating user:  =  \e""[0m \e[31m"$newuname"\e[0m"
 useradd -m "$newuname"
-passwd "$newuname" x
+usermod --password x "$newuname"
 echo -e "\e[32m  Set password for:  =  \e""[0m \e[31m"root"\e[0m"
-passwd x
+usermod --password x root
 # add user to default groups
 usermod -aG wheel,audio,video,optical,storage $newuname
 # set sudo to no password
