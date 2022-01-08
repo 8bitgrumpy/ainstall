@@ -130,6 +130,7 @@ sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 20/g' /etc/pacman.conf
 sed -i '/^#VerbosePkgLists/a ILoveCandy' /etc/pacman.conf
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 #Set username + hostname var
+pacman -Syyu --noconfirm
 
 # Install boot programs
 pacman -Sy --noconfirm \
@@ -242,7 +243,7 @@ cp -r ./di_lite_config/bash_profile /home/$newuname/.bash_profile
 cp -r ./di_lite_config/bashrc /home/$newuname/.bashrc
 cp -r ./di_lite_config/xinitrc /home/$newuname/.xinitrc
 cp -r ./di_lite_config/xscreensaver /home/$newuname/.xscreensaver
-cp -rf ./di_lite_config/config/* /home/$newuname/.config/
+cp -rf ./di_lite_config/config /home/$newuname/.config
 chmod +x /home/$newuname/.config/bspwm/bspwmrc
 chmod +x /home/$newuname/.config/sxhkd/sxhkdrc
 chmod +x /home/$newuname/.config/polybar/launch.sh
