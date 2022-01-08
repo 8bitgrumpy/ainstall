@@ -5,7 +5,10 @@ echo -e "\e[36m
 ------------------------------------------
 \e[0m"
 
-sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 20/g' /etc/pacman.conf
+pacman-key --init
+pacman-key --populate archlinux
+
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/g' /etc/pacman.conf
 sed -i '/^#VerbosePkgLists/a ILoveCandy' /etc/pacman.conf
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 #Set username + hostname var
