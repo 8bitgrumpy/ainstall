@@ -176,7 +176,9 @@ pacman -Sy --noconfirm \
 unzip \
 htop \
 neofetch \
-rsync
+rsync \
+git \
+glibc
 
 #Install paru
 cd /tmp
