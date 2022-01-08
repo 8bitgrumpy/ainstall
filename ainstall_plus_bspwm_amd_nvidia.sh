@@ -181,9 +181,15 @@ rsync \
 git \
 glibc
 
+# required for aur helper
+pacman -Sy --noconfirm \ 
+rust \
+go \
+base-devel
+
+
 #Install paru
 cd /tmp
-pacman -Sy --noconfirm --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
