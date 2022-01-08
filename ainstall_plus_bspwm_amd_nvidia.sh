@@ -134,7 +134,8 @@ pacman -Syyu --noconfirm
 
 # Install boot programs
 pacman -Sy --noconfirm \
-grub
+grub \
+efibootmgr
 
 # insall sudo
 pacman -Sy --noconfirm \
