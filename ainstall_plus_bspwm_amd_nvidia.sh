@@ -181,28 +181,6 @@ rsync \
 git \
 glibc
 
-# required for aur helper
-pacman -Sy --noconfirm \ 
-rust \
-go \
-base-devel
-
-
-#Install paru
-cd /tmp
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-
-paru -S --noconfirm  ttf-unifont
-paru -S --noconfirm  siji-git
-paru -S --noconfirm  ttf-font-awesome
-paru -S --noconfirm  ttf-material-design-icons
-paru -S --noconfirm  polybar
-paru -S --noconfirm  brave
-paru -S --noconfirm dracula-gtk-theme
-paru -S --noconfirm xscreensaver-arch-logo
-
 # set user passwords
 echo -e "\e[32m  Creating user:  =  \e""[0m \e[31m"$newuname"\e[0m"
 useradd -m "$newuname"
@@ -257,7 +235,7 @@ chmod +x /home/$newuname/.config/polybar/scripts/speedtest/polybar-speedtest
 
 unzip Dracula.zip
 sudo cp -R Dracula /usr/share/icons/
-sudo pacman -Scc noconfirm
+sudo pacman -Scc --noconfirm
 
 EOF
 
