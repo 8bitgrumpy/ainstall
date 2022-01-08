@@ -157,14 +157,13 @@ parted -s /dev/$ddrive mkpart primary f2fs 6694MiB 100%
 mkfs.fat -F32 /dev/"$dinstall"1
 mkswap /dev/"$dinstall"2
 swapon /dev/"$dinstall"2
-mkfs.f2fs -l x /dev/"$dinstall"3
+mkfs.ext4 /dev/"$dinstall"3
 echo -e "\e[33m  Drives Created & formatted. Running packstrap :\e[0m"
 # pacstrap base components 
 mount /dev/"$dinstall"3 /mnt
 pacstrap /mnt base \
 linux-firmware \
 linux-zen \
-git \
 linux-zen-headers \
 
 # createing fstab to mount drives on boot
@@ -180,19 +179,75 @@ sed -i '/^#VerbosePkgLists/a ILoveCandy' /etc/pacman.conf
 sed -i 's/#Color/Color/g' /etc/pacman.conf
 #Set username + hostname var
 
-
+# Install boot programs
 pacman -Sy --noconfirm \
-sudo \
-grub \
-efibootmgr \
-networkmanager \
+grub
+
+# insall sudo
+pacman -Sy --noconfirm \
+sudo
+
+# insall editors
+pacman -Sy --noconfirm \
 nano \
+vim
+
+
+# insall drivers
+pacman -Sy --noconfirm \
+nvidia-dkms \
+amd-ucode
+
+# install bspwm
+pacman -Sy --noconfirm \
+bspwm \
+feh \
+terminator \
+pulseaudio \
+pavucontrol \
+udiskie \
+sxhkd \
+xorg \
+xorg-xinit \
+ttf-dejavu \
+dmenu
+
+# install bluetooth
+pacman -Sy --noconfirm \
+bluez \
+bluez-utils
+# enable bluetooth service
+systemctl enable bluetooth.service
+
+# install misc tools
+pacman -Sy --noconfirm \
+unzip \
+htop \
+neofetch \
+rsync
+
+#Install paru
+cd /tmp
+pacman -Sy --noconfirm --needed base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+
+paru -S --noconfirm  ttf-unifont
+paru -S --noconfirm  siji-git
+paru -S --noconfirm  ttf-font-awesome
+paru -S --noconfirm  ttf-material-design-icons
+paru -S --noconfirm  polybar
+paru -S --noconfirm  brave
+paru -S --noconfirm dracula-gtk-theme
+paru -S --noconfirm xscreensaver-arch-logo
+
 # set user passwords
 echo -e "\e[32m  Creating user:  =  \e""[0m \e[31m"$newuname"\e[0m"
 useradd -m "$newuname"
-passwd "$newuname"
+passwd "$newuname" x
 echo -e "\e[32m  Set password for:  =  \e""[0m \e[31m"root"\e[0m"
-passwd
+passwd x
 # add user to default groups
 usermod -aG wheel,audio,video,optical,storage $newuname
 # set sudo to no password
@@ -226,8 +281,23 @@ set timezone
 timedatectl set-ntp true
 # set to uk keymap 
 echo "KEYMAP=uk" > /etc/vconsole.conf
-# enable services 
-systemctl enable NetworkManager
+git clone https://github.com/8bitgrumpy/ainstall
+cd ainstall
+cp -r ./di_lite_config/Xauthority /home/$newuname/.Xauthority
+cp -r ./di_lite_config/bash_profile /home/$newuname/.bash_profile
+cp -r ./di_lite_config/bashrc /home/$newuname/.bashrc
+cp -r ./di_lite_config/xinitrc /home/$newuname/.xinitrc
+cp -r ./di_lite_config/xscreensaver /home/$newuname/.xscreensaver
+cp -rf ./di_lite_config/config/* /home/$newuname/.config/
+chmod +x /home/$newuname/.config/bspwm/bspwmrc
+chmod +x /home/$newuname/.config/sxhkd/sxhkdrc
+chmod +x /home/$newuname/.config/polybar/launch.sh
+chmod +x /home/$newuname/.config/polybar/scripts/speedtest/polybar-speedtest
+
+unzip Dracula.zip
+sudo cp -R Dracula /usr/share/icons/
+sudo pacman -Scc noconfirm
+
 EOF
 
 # copy generated second stage script to chroot , run + tidyup. 
