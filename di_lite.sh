@@ -21,7 +21,6 @@ xorg \
 xorg-xinit \
 ttf-dejavu \
 sxhkd \
-ranger \
 dmenu \
 bluez \
 bluez-utils \
@@ -41,7 +40,8 @@ nvidia-dkms \
 lxappearance \
 unzip \
 pcmanfm \
-udiskie 
+udiskie \
+firefox
 
 
 
@@ -59,7 +59,6 @@ yay -S  siji-git
 yay -S  ttf-font-awesome
 yay -S  ttf-material-design-icons
 yay -S  polybar
-yay -S  brave
 yay -S dracula-gtk-theme
 yay -S xscreensaver-arch-logo
 
