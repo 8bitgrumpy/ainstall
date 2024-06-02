@@ -267,15 +267,7 @@ notepadqq \
 signal-desktop
 
 
-#yay helper install
 
-#yay install
-git clone https://aur.archlinux.org/yay.git
-chown $user:$user ./yay
-cd yay
-makepkg -si
-cd ..
-rm -r -f ./yay/
 
 # setup of bash_profile to auto startx
 sed -i '$ a if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then' ~/.bash_profile
